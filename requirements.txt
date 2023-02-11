@@ -3,3 +3,4 @@ youtube_dl
 pydub
 youtube_search
 pytube
+ffmpeg
