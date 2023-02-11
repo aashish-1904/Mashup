@@ -1,0 +1,6 @@
+streamlit
+pafy
+youtube_dl
+pydub
+ffmpeg
+moviepy
