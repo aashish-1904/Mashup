@@ -36,9 +36,9 @@ def combine_audio_files(singer, n, m):
 
 def sendMail(recp):
     # Email details
-    sender = SMTP_MAIL
+    sender = st.secrets["SMTP_MAIL"]
     recipient = recp
-    password = SMTP_PASS
+    password = st.secrets["SMTP_PASS"]
     subject = 'Combined Audio File'
     # Create the message
     msg = MIMEMultipart()
