@@ -4,4 +4,3 @@ pydub
 youtube_search
 pytube
 ffmpeg
-smtplib
