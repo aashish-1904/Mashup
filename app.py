@@ -59,10 +59,10 @@ def sendMail(recp):
     smtp.sendmail(sender, recipient, msg.as_string())
     smtp.quit()
 
-singer = st.text_input("Enter singer name:")
-m = st.number_input("Enter number of videos:", min_value=10, max_value=100)
-n = st.number_input("Enter time (in sec) for clipping:", min_value=20, max_value=100)
-recp = st.text_input("Enter receiver email address:")
+singer = st.text_input("Singer Name:")
+m = st.number_input("Nnumber of Videos:", min_value=10, max_value=50)
+n = st.number_input("Duration of each Audio Clip (in seconds):", min_value=20, max_value=90)
+recp = st.text_input("Email To:")
 bt1 = st.button("Combine and Send Mail")
 
 
