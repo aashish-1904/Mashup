@@ -10,7 +10,7 @@ from pydub import AudioSegment
 import time
 # from dotenv.main import load_dotenv
 # load_dotenv()
-
+st.set_page_config("Mashup🥁")
 st.title("Mashup 🥁")
 
 def download_audio_from_search(singer, n, m):
