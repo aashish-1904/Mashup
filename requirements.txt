@@ -1,6 +1,5 @@
 streamlit
-pafy
 youtube_dl
 pydub
-ffmpeg
-moviepy
+youtube_search
+pytube
