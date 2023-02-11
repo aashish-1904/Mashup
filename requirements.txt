@@ -4,3 +4,5 @@ pydub
 youtube_search
 pytube
 ffmpeg
+moviepy
+pafy
