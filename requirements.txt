@@ -1,5 +1,5 @@
 streamlit
-ffmpeg
+sudo apt install ffmpeg
 ffprobe
 youtube_dl
 pydub
