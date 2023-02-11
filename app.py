@@ -8,8 +8,8 @@ from youtube_search import YoutubeSearch
 import pydub
 from pydub import AudioSegment
 import time
-from dotenv.main import load_dotenv
-load_dotenv()
+# from dotenv.main import load_dotenv
+# load_dotenv()
 
 st.title("Mashup 🥁")
 
