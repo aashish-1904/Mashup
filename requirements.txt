@@ -1,5 +1,6 @@
 streamlit
 ffmpeg
+ffprobe
 youtube_dl
 pydub
 youtube_search
