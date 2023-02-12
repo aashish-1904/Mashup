@@ -92,9 +92,10 @@ if bt1:
             download_audio_from_search(singer, n, m)
             combine_audio_files(singer, n, m)
             sendMail(recp)
+            st.success('Your file was mailed successfully!')
         except:
             st.error("Too much traffic at the moment, please try again in a few minutes")
-    st.success('Your file was mailed successfully!')
+    
         
     # if st.button("Send Mail"):       
     # st.success("Mail sent successfully!")
