@@ -88,9 +88,12 @@ if bt1:
     # combine_audio_files(singer, n, m)
     # recp = st.text_input("Enter receiver email:")
     with st.spinner('Preparing Audio... (this may take upto a few minutes)'):
-        download_audio_from_search(singer, n, m)
-        combine_audio_files(singer, n, m)
-        sendMail(recp)
+        try:
+            download_audio_from_search(singer, n, m)
+            combine_audio_files(singer, n, m)
+            sendMail(recp)
+        except:
+            st.error("Too much traffic at the moment, please try again in a few minutes")
     st.success('Your file was mailed successfully!')
         
     # if st.button("Send Mail"):       
