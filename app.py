@@ -28,8 +28,9 @@ def download_audio_from_search(singer, n, m):
         audio = pydub.AudioSegment.from_file(f"{singer}_{i}.mp4")
         audio = audio[:n * 1000]
         audio.export(f"{singer}_{i}.mp3", format="mp3")
-        time.sleep(10)
+        
 #         except:
+        time.sleep(3)
 #             continue
 # def download_audio_from_search(singer, n, m):
 #     results = YoutubeSearch(singer, max_results=m).to_dict()
@@ -89,17 +90,17 @@ if bt1:
     # combine_audio_files(singer, n, m)
     # recp = st.text_input("Enter receiver email:")
     with st.spinner('Preparing Audio... (this may take upto a few minutes)'):
-        download_audio_from_search(singer, n, m)
-        combine_audio_files(singer, n, m)
-        sendMail(recp)
-        st.success('Your file was mailed successfully!')
-#         try:
-#             download_audio_from_search(singer, n, m)
-#             combine_audio_files(singer, n, m)
-#             sendMail(recp)
-#             st.success('Your file was mailed successfully!')
-#         except:
-#             st.error("Too much traffic at the moment, please try again in a few minutes")
+#         download_audio_from_search(singer, n, m)
+#         combine_audio_files(singer, n, m)
+#         sendMail(recp)
+#         st.success('Your file was mailed successfully!')
+        try:
+            download_audio_from_search(singer, n, m)
+            combine_audio_files(singer, n, m)
+            sendMail(recp)
+            st.success('Your file was mailed successfully!')
+        except:
+            st.error("Too much traffic at the moment, please try again in a few minutes")
     
         
     # if st.button("Send Mail"):       
