@@ -8,6 +8,7 @@ from youtube_search import YoutubeSearch
 import pydub
 from pydub import AudioSegment
 import time
+import requests
 # from dotenv.main import load_dotenv
 # load_dotenv()
 st.set_page_config("Mashup🥁")
@@ -15,15 +16,28 @@ st.title("Mashup 🥁")
 
 def download_audio_from_search(singer, n, m):
     results = YoutubeSearch(singer, max_results=m).to_dict()
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     for i, result in enumerate(results):
         video_url = "https://www.youtube.com/watch?v=" + result["id"]
-        yt = YouTube(video_url)
+        yt = YouTube(requests.get(video_url, headers=headers).text)
         stream = yt.streams.filter(only_audio=True).first()
         stream.download(filename=f"{singer}_{i}.mp4")
 
         audio = pydub.AudioSegment.from_file(f"{singer}_{i}.mp4")
         audio = audio[:n * 1000]
         audio.export(f"{singer}_{i}.mp3", format="mp3")
+# def download_audio_from_search(singer, n, m):
+#     results = YoutubeSearch(singer, max_results=m).to_dict()
+#     for i, result in enumerate(results):
+#         video_url = "https://www.youtube.com/watch?v=" + result["id"]
+#         yt = YouTube(video_url)
+#         stream = yt.streams.filter(only_audio=True).first()
+#         stream.download(filename=f"{singer}_{i}.mp4")
+
+#         audio = pydub.AudioSegment.from_file(f"{singer}_{i}.mp4")
+#         audio = audio[:n * 1000]
+#         audio.export(f"{singer}_{i}.mp3", format="mp3")
         # st.write(f"Audio of {n} seconds from {yt.title} downloaded and converted to MP3 successfully")
 
 def combine_audio_files(singer, n, m):
