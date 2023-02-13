@@ -36,7 +36,7 @@ def download_audio_from_search(singer, n, m):
 #                 success = True/
         
         except pytube.exceptions.VideoUnavailable as e:
-           time.sleep(0.5)
+           time.sleep(2)
 #             continue
 # def download_audio_from_search(singer, n, m):
 #     results = YoutubeSearch(singer, max_results=m).to_dict()
