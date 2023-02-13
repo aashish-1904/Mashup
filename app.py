@@ -16,12 +16,13 @@ st.set_page_config("Mashup🥁")
 st.title("Mashup 🥁")
 
 def download_audio_from_search(singer, n, m):
-    session = requests.Session()
+#     session = requests.Session()
     results = YoutubeSearch(singer, max_results=m).to_dict()
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     for i, result in enumerate(results):
         video_url = "https://www.youtube.com/watch?v=" + result["id"]
+        session = requests.Session()
 #         success = False
 #         while not success:
         try:
