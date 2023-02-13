@@ -21,7 +21,8 @@ def download_audio_from_search(singer, n, m):
     for i, result in enumerate(results):
         video_url = "https://www.youtube.com/watch?v=" + result["id"]
 #         try:
-        yt = YouTube(requests.get(video_url, headers=headers).text)
+        session = requests.Session()
+        yt = YouTube(session.get(video_url, headers=headers).text)
         stream = yt.streams.filter(only_audio=True).first()
         stream.download(filename=f"{singer}_{i}.mp4")
 
