@@ -37,7 +37,7 @@ def download_audio_from_search(singer, n, m):
                 st.write(f"Audio of {n} seconds from {yt.title} downloaded and converted to MP3 successfully")
                 success = True
         
-        except pytube.exceptions.VideoUnavailable as e:
+            except pytube.exceptions.VideoUnavailable as e:
 #             except:
                 time.sleep(2)
 #             continue
