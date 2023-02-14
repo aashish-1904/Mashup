@@ -34,7 +34,7 @@ def download_audio_from_search(singer, n, m):
                 audio = pydub.AudioSegment.from_file(f"{singer}_{i}.mp4")
                 audio = audio[:n * 1000]
                 audio.export(f"{singer}_{i}.mp3", format="mp3")
-                success = True/
+                success = True
         
 #         except pytube.exceptions.VideoUnavailable as e:
             except:
