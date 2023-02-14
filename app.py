@@ -50,13 +50,20 @@ def download_audio_from_search(singer, n, m):
 #         audio = audio[:n * 1000]
 #         audio.export(f"{singer}_{i}.mp3", format="mp3")
         # st.write(f"Audio of {n} seconds from {yt.title} downloaded and converted to MP3 successfully")
-
 def combine_audio_files(singer, n, m):
     combined = AudioSegment.empty()
     for i in range(m):
-        audio = AudioSegment.from_file(f"{singer}_{i}.mp3")
-        combined += audio
-    combined.export(f"combined.mp3", format="mp3")
+        filename = f"{singer}_{i}.mp3"
+        if os.path.exists(filename):
+            audio = AudioSegment.from_file(filename)
+            combined += audio
+    combined.export(f"{singer}_combined.mp3", format="mp3")
+# def combine_audio_files(singer, n, m):
+#     combined = AudioSegment.empty()
+#     for i in range(m):
+#         audio = AudioSegment.from_file(f"{singer}_{i}.mp3")
+#         combined += audio
+#     combined.export(f"combined.mp3", format="mp3")
     # st.write(f"All audio files combined into a single file: {singer}_combined.mp3")
 
 def sendMail(recp):
