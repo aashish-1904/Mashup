@@ -34,7 +34,7 @@ def download_audio_from_search(singer, n, m):
                 audio = pydub.AudioSegment.from_file(f"{singer}_{i}.mp4")
                 audio = audio[:n * 1000]
                 audio.export(f"{singer}_{i}.mp3", format="mp3")
-                print(f"Audio of {n} seconds from {yt.title} downloaded and converted to MP3 successfully")
+                st.write(f"Audio of {n} seconds from {yt.title} downloaded and converted to MP3 successfully")
                 success = True
         
 #         except pytube.exceptions.VideoUnavailable as e:
@@ -66,8 +66,8 @@ def combine_audio_files(singer, n, m):
     for i in range(m):
         audio = AudioSegment.from_file(f"{singer}_{i}.mp3")
         combined += audio
-    combined.export(f"combined.mp3", format="mp3")
-    print(f"All audio files combined into a single file: {singer}_combined.mp3")
+    combined.export(f"{singer}_combined.mp3", format="mp3")
+    st.write(f"All audio files combined into a single file: {singer}_combined.mp3")
 
 def sendMail(recp):
     # Email details
@@ -84,7 +84,7 @@ def sendMail(recp):
     text = MIMEText(f'Please find the attached the combined audio file of {singer}')
     msg.attach(text)
     # Add the audio file
-    audi = MIMEAudio(open('combined.mp3', 'rb').read(), 'mp3')
+    audi = MIMEAudio(open(f'{singer}_combined.mp3', 'rb').read(), 'mp3')
     msg.attach(audi)
     # Send the email
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
