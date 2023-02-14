@@ -58,7 +58,7 @@ def combine_audio_files(singer, n, m):
         if os.path.exists(filename):
             audio = AudioSegment.from_file(filename)
             combined += audio
-    combined.export(f"{singer}_combined.mp3", format="mp3")
+    combined.export("combined.mp3", format="mp3")
 # def combine_audio_files(singer, n, m):
 #     combined = AudioSegment.empty()
 #     for i in range(m):
