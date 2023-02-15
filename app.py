@@ -21,10 +21,11 @@ def download_audio_from_search(singer, n, m):
     results = YoutubeSearch(singer, max_results=m).to_dict()
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     for i, result in enumerate(results):
-                video_url = "https://www.youtube.com/watch?v=" + result["id"]
+        
+        video_url = "https://www.youtube.com/watch?v=" + result["id"]
 # #         success = False
-# #         while not success:
-#         try:
+        while not success:
+            try:
                 session = requests.Session()
                 yt = YouTube(session.get(video_url, headers=headers).text)
                 stream = yt.streams.filter(only_audio=True).first()
@@ -33,9 +34,10 @@ def download_audio_from_search(singer, n, m):
                 audio = audio[:n * 1000]
                 audio.export(f"{singer}_{i}.mp3", format="mp3")
                 st.write(f"Audio of {n} seconds from {yt.title} downloaded and converted to MP3 successfully")
-# #                 success = True
+                success = True
         
-#         except: # pytube.exceptions.VideoUnavailable as e
+        except:
+            st.write("Errrr")# pytube.exceptions.VideoUnavailable as e
 # #             except:
 #             time.sleep(2)
 #             continue
